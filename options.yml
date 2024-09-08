@@ -1,0 +1,37 @@
+meta:
+  version: 1.0.0
+options:
+- display: GroupBox
+  text: '{{general_descr}}'
+  hasHeader: false
+  category: [Running Units]
+  children:
+  - display: GroupBox
+    header: '{{macemen_general}}'
+    text: '{{macemen_general_descr}}'
+    hasHeader: true
+    children:
+    - url: running-units.macemen.running.general
+      name: running-units-macemen-running-general
+      text: '{{macemen_running_general}}'
+      display: Switch
+      contents:
+        type: boolean
+        value: false
+    - url: running-units.macemen.running.ai
+      name: running-units-macemen-running-ai
+      hasHeader: false
+      text: '{{macemen_running_ai_descr}}'
+      display: RadioGroup
+      enabled: running-units.macemen.running.general
+      contents:
+        value: aic_run_if_not_defined
+        choices:
+        - name: aic_ignore_run
+          text: '{{macemen_running_ai_aic_ignore_run}}'
+        - name: aic_ignore_walk
+          text: '{{macemen_running_ai_aic_ignore_walk}}'
+        - name: aic_run_if_not_defined
+          text: '{{macemen_running_ai_aic_run_if_not_defined}}'
+        - name: aic_walk_if_not_defined
+          text: '{{macemen_running_ai_aic_walk_if_not_defined}}'

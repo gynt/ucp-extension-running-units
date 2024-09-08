@@ -1,0 +1,8 @@
+name: running-units
+display-name: Running Units
+version: 0.0.1
+author: gynt
+dependencies:
+  frontend: ">=1.0.5"
+  framework: ">=3.0.4"
+  aicloader: ">=1.1.0"

@@ -1,0 +1,12 @@
+general_descr: Some units walk by default when in groups (with other types of units) when going to a destination. Using the options below you can set them to run instead.
+macemen_general: Macemen
+macemen_general_descr: |
+  Using the options below, you can enable macemen to run. 
+  
+  You can also allow AI Personalities to dictate running or walking, and set the default (which also applies to human players).
+macemen_running_general: Enable running macemen
+macemen_running_ai_descr: "If enabled: "
+macemen_running_ai_aic_ignore_run: Macemen run, ignore AI Personalities
+macemen_running_ai_aic_ignore_walk: Macemen walk, ignore AI Personalities
+macemen_running_ai_aic_run_if_not_defined: Macemen run by default, respect AI Personalities
+macemen_running_ai_aic_walk_if_not_defined: Macemen walk by default, respect AI Personalities
