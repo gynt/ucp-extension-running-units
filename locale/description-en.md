@@ -14,3 +14,10 @@ If you add in your `character.json`:
 ```
 Then, macemen will run. If set to `0` or `2`, they will walk (vanilla behavior).
 
+## Support
+All support is welcome!
+
+[!["Buy Me A Coffee"](https://raw.githubusercontent.com/gynt/ucp-extension-running-units/main/locale/orange_img.webp)](https://www.buymeacoffee.com/gynt)
+
+If you have PayPal:
+[!["Support me on Ko-Fi"](https://raw.githubusercontent.com/gynt/ucp-extension-running-units/main/locale/kofi_button_red.png)](https://ko-fi.com/kofigynt)
