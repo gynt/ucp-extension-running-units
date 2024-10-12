@@ -3,10 +3,43 @@ macemen_general: Macemen
 macemen_general_descr: |
   Using the options below, you can enable macemen to run. 
   
-  You can also allow AI Personalities to dictate running or walking, and set the default (which also applies to human players).
+  You can also allow AI Personalities to dictate running or vanilla walking, and set the default (which also applies to human players).
 macemen_running_general: Enable running macemen
 macemen_running_ai_descr: "If enabled: "
 macemen_running_ai_aic_ignore_run: Macemen run, ignore AI Personalities
-macemen_running_ai_aic_ignore_walk: Macemen walk, ignore AI Personalities
+macemen_running_ai_aic_ignore_walk: Vanilla behavior, ignore AI Personalities
 macemen_running_ai_aic_run_if_not_defined: Macemen run by default, respect AI Personalities
-macemen_running_ai_aic_walk_if_not_defined: Macemen walk by default, respect AI Personalities
+macemen_running_ai_aic_walk_if_not_defined: Vanilla behavior by default, respect AI Personalities
+slingers_general: Slingers
+slingers_general_descr: |
+  Using the options below, you can enable slingers to run. 
+  
+  You can also allow AI Personalities to dictate running or vanilla walking, and set the default (which also applies to human players).
+slingers_running_general: Enable running slingers
+slingers_running_ai_descr: "If enabled: "
+slingers_running_ai_aic_ignore_run: Slingers run, ignore AI Personalities
+slingers_running_ai_aic_ignore_walk: Vanilla behavior, ignore AI Personalities
+slingers_running_ai_aic_run_if_not_defined: Slingers run by default, respect AI Personalities
+slingers_running_ai_aic_walk_if_not_defined: Vanilla behavior by default, respect AI Personalities
+slaves_general: Slaves
+slaves_general_descr: |
+  Using the options below, you can enable slaves to run. 
+  
+  You can also allow AI Personalities to dictate running or vanilla walking, and set the default (which also applies to human players).
+slaves_running_general: Enable running slaves
+slaves_running_ai_descr: "If enabled: "
+slaves_running_ai_aic_ignore_run: Slaves run, ignore AI Personalities
+slaves_running_ai_aic_ignore_walk: Vanilla behavior, ignore AI Personalities
+slaves_running_ai_aic_run_if_not_defined: Slaves run by default, respect AI Personalities
+slaves_running_ai_aic_walk_if_not_defined: Vanilla behavior by default, respect AI Personalities
+spearmen_general: Spearmen
+spearmen_general_descr: |
+  Using the options below, you can enable spearmen to run. Note you should turn off the similar feature available in ucp2-legacy.
+  
+  You can also allow AI Personalities to dictate running or vanilla walking, and set the default (which also applies to human players).
+spearmen_running_general: Enable running spearmen
+spearmen_running_ai_descr: "If enabled: "
+spearmen_running_ai_aic_ignore_run: Spearmen run, ignore AI Personalities
+spearmen_running_ai_aic_ignore_walk: Vanilla behavior, ignore AI Personalities
+spearmen_running_ai_aic_run_if_not_defined: Spearmen run by default, respect AI Personalities
+spearmen_running_ai_aic_walk_if_not_defined: Vanilla behavior by default, respect AI Personalities

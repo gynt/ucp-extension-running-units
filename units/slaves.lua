@@ -13,85 +13,85 @@ local SLAVES_AIC_VALUES = {
 local slavesMode = core.allocate(1, true)
 
 return function(config)
-  error("not implemented")
-	log(VERBOSE, "enable slaves running")
-	-- Register in the aicloader that we provide an extra value
-	modules.aicloader:setAdditionalAICValue(
-		SLAVES_AIC_KEY,
-		-- set
-		function(aiType, aicValue)
-			if type(aicValue) ~= "number" then
-				log(WARNING,
-					string.format("Cannot set AIC '%s', invalid value: %s", SLAVES_AIC_KEY, tostring(aicValue)))
-			else
-				if config.slaves.running.ai ~= "aic_ignore_run" and config.slaves.running.ai ~= "aic_ignore_walk" then
-					log(VERBOSE,
-						string.format("Setting %s for ai #%s to value '%s'", SLAVES_AIC_KEY, aiType,
-							tostring(SLAVES_AIC_VALUES[aicValue])))
-					core.writeByte(aicRunningSlaves + aiType, aicValue)
-				else
-					log(WARNING,
-						string.format("Did not set AIC '%s', aic value is ignored", SLAVES_AIC_KEY))
-				end
-			end
-		end,
-		-- reset
-		function(aiType)
-			core.writeByte(aicRunningSlaves + aiType, 0)
-		end
-	)
+    log(VERBOSE, "enable slaves running")
+    -- Register in the aicloader that we provide an extra value
+    modules.aicloader:setAdditionalAICValue(
+        SLAVES_AIC_KEY,
+        -- set
+        function(aiType, aicValue)
+            if type(aicValue) ~= "number" then
+                log(WARNING,
+                    string.format("Cannot set AIC '%s', invalid value: %s", SLAVES_AIC_KEY, tostring(aicValue)))
+            else
+                if config.slaves.running.ai ~= "aic_ignore_run" and config.slaves.running.ai ~= "aic_ignore_walk" then
+                    log(VERBOSE,
+                        string.format("Setting %s for ai #%s to value '%s'", SLAVES_AIC_KEY, aiType,
+                            tostring(SLAVES_AIC_VALUES[aicValue])))
+                    core.writeByte(aicRunningSlaves + aiType, aicValue)
+                else
+                    log(WARNING,
+                        string.format("Did not set AIC '%s', aic value is ignored", SLAVES_AIC_KEY))
+                end
+            end
+        end,
+        -- reset
+        function(aiType)
+            core.writeByte(aicRunningSlaves + aiType, 0)
+        end
+    )
 
-	-- Location for the detour
-	-- ESI contains units offset for current unit ID
-	-- EBP contains player ID
-	-- EBX contains current unit ID
-	-- ECX should be restored
-	-- EAX should be restored
-	-- 0x00573182
-	local beforeCmpLocation = core.AOBScan("66 ? ? ? ? ? ? 75 1E 0F ? ? ? ? ? ? 69 C0 34 03 00 00 66 ? ? ? ? ? ? 75 08 38 ? ? ? ? ? 74 13 C7 ? ? ? ? ? ? ? ? ? 66 ? ? ? ? ? ? EB 1A 66 ? ? ? ? ? ? C7 ? ? ? ? ? ? ? ? ? 66 ? ? ? ? ? ? ? ? 0F ? ? ? ? ? ? 69 C0 34 03 00 00 66 ? ? ? ? ? ? 75 0B")
-	local detourSize = 7
-	local setRunning = beforeCmpLocation + 65 -- 0x005731c3
+    -- Location for the detour
+    -- ESI contains units offset for current unit ID
+    -- EBP contains player ID
+    -- EBX contains current unit ID
+    -- ECX should be restored
+    -- EAX should be restored
+    -- 0x00571ff6
+    local beforeCmpLocation = core.AOBScan("0F ? ? ? ? ? ? 66 3B C7 74 17")
+    local detourSize = 7
+    -- Actually the default is run, then slowdown is applied, so we skip slowdown logic
+    local setRunning = beforeCmpLocation + 51 -- 0x00572029
 
-	if config.slaves.running.ai == "aic_ignore_run" then
-		-- Set to always run without caring about AIC
-		core.writeBytes(aicRunningSlaves, {
-			1, 1, 1, 1, 1,
-			1, 1, 1, 1, 1,
-			1, 1, 1, 1, 1,
-			1, 1,
-		})
-	elseif config.slaves.running.ai == "aic_ignore_walk" then
-		-- Do nothing?, this is the vanilla situation
-		core.writeBytes(aicRunningSlaves, {
-			2, 2, 2, 2, 2,
-			2, 2, 2, 2, 2,
-			2, 2, 2, 2, 2,
-			2, 2,
-		})
-	elseif config.slaves.running.ai == "aic_run_if_not_defined" then
-		-- If AIC didn't define, assume run
-		core.writeBytes(aicRunningSlaves, {
-			1, 1, 1, 1, 1,
-			1, 1, 1, 1, 1,
-			1, 1, 1, 1, 1,
-			1, 1,
-		})
-	elseif config.slaves.running.ai == "aic_walk_if_not_defined" then
-		-- If AIC didn't define, assume walk
-		core.writeBytes(aicRunningSlaves, {
-			2, 2, 2, 2, 2,
-			2, 2, 2, 2, 2,
-			2, 2, 2, 2, 2,
-			2, 2,
-		})
-	else
-		error(string.format("Invalid option: %s", config.slaves.running.ai))
-	end
+    if config.slaves.running.ai == "aic_ignore_run" then
+        -- Set to always run without caring about AIC
+        core.writeBytes(aicRunningSlaves, {
+            1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 1,
+        })
+    elseif config.slaves.running.ai == "aic_ignore_walk" then
+        -- Do nothing?, this is the vanilla situation
+        core.writeBytes(aicRunningSlaves, {
+            2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2,
+            2, 2,
+        })
+    elseif config.slaves.running.ai == "aic_run_if_not_defined" then
+        -- If AIC didn't define, assume run
+        core.writeBytes(aicRunningSlaves, {
+            1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1,
+            1, 1,
+        })
+    elseif config.slaves.running.ai == "aic_walk_if_not_defined" then
+        -- If AIC didn't define, assume walk
+        core.writeBytes(aicRunningSlaves, {
+            2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2,
+            2, 2, 2, 2, 2,
+            2, 2,
+        })
+    else
+        error(string.format("Invalid option: %s", config.slaves.running.ai))
+    end
 
 
-	local _, ptrCurrentAIArray = utils.AOBExtract(
-		"8D ? ? I(? ? ? ?) 6A 04 51 B9 ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 6A 00 6A 00")
-	local asm = [[
+    local _, ptrCurrentAIArray = utils.AOBExtract(
+        "8D ? ? I(? ? ? ?) 6A 04 51 B9 ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 6A 00 6A 00")
+    local asm = [[
 		push ECX
 		push EAX
 
@@ -129,12 +129,12 @@ return function(config)
 		; resume original code
 	]]
 
-	-- Detour at the location, place original code at the end of the custom assembly
-	core.insertCode(beforeCmpLocation, detourSize, {
-		core.AssemblyLambda(asm, {
-			ptrCurrentAIArray = ptrCurrentAIArray,
-			aicRunningSlaves = aicRunningSlaves,
-			setRunning = setRunning,
-		}),
-	}, nil, 'after')
+    -- Detour at the location, place original code at the end of the custom assembly
+    core.insertCode(beforeCmpLocation, detourSize, {
+        core.AssemblyLambda(asm, {
+            ptrCurrentAIArray = ptrCurrentAIArray,
+            aicRunningSlaves = aicRunningSlaves,
+            setRunning = setRunning,
+        }),
+    }, nil, 'after')
 end

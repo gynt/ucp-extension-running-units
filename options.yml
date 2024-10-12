@@ -35,3 +35,90 @@ options:
           text: '{{macemen_running_ai_aic_run_if_not_defined}}'
         - name: aic_walk_if_not_defined
           text: '{{macemen_running_ai_aic_walk_if_not_defined}}'
+  - display: GroupBox
+    header: '{{slingers_general}}'
+    text: '{{slingers_general_descr}}'
+    hasHeader: true
+    children:
+    - url: running-units.slingers.running.general
+      name: running-units-slingers-running-general
+      text: '{{slingers_running_general}}'
+      display: Switch
+      contents:
+        type: boolean
+        value: false
+    - url: running-units.slingers.running.ai
+      name: running-units-slingers-running-ai
+      hasHeader: false
+      text: '{{slingers_running_ai_descr}}'
+      display: RadioGroup
+      enabled: running-units.slingers.running.general
+      contents:
+        value: aic_run_if_not_defined
+        choices:
+        - name: aic_ignore_run
+          text: '{{slingers_running_ai_aic_ignore_run}}'
+        - name: aic_ignore_walk
+          text: '{{slingers_running_ai_aic_ignore_walk}}'
+        - name: aic_run_if_not_defined
+          text: '{{slingers_running_ai_aic_run_if_not_defined}}'
+        - name: aic_walk_if_not_defined
+          text: '{{slingers_running_ai_aic_walk_if_not_defined}}'
+  - display: GroupBox
+    header: '{{slaves_general}}'
+    text: '{{slaves_general_descr}}'
+    hasHeader: true
+    children:
+    - url: running-units.slaves.running.general
+      name: running-units-slaves-running-general
+      text: '{{slaves_running_general}}'
+      display: Switch
+      contents:
+        type: boolean
+        value: false
+    - url: running-units.slaves.running.ai
+      name: running-units-slaves-running-ai
+      hasHeader: false
+      text: '{{slaves_running_ai_descr}}'
+      display: RadioGroup
+      enabled: running-units.slaves.running.general
+      contents:
+        value: aic_run_if_not_defined
+        choices:
+        - name: aic_ignore_run
+          text: '{{slaves_running_ai_aic_ignore_run}}'
+        - name: aic_ignore_walk
+          text: '{{slaves_running_ai_aic_ignore_walk}}'
+        - name: aic_run_if_not_defined
+          text: '{{slaves_running_ai_aic_run_if_not_defined}}'
+        - name: aic_walk_if_not_defined
+          text: '{{slaves_running_ai_aic_walk_if_not_defined}}'
+  - display: GroupBox
+    header: '{{spearmen_general}}'
+    text: '{{spearmen_general_descr}}'
+    hasHeader: true
+    children:
+    - url: running-units.spearmen.running.general
+      name: running-units-spearmen-running-general
+      text: '{{spearmen_running_general}}'
+      display: Switch
+      contents:
+        type: boolean
+        value: false
+    - url: running-units.spearmen.running.ai
+      name: running-units-spearmen-running-ai
+      hasHeader: false
+      text: '{{spearmen_running_ai_descr}}'
+      display: RadioGroup
+      enabled: running-units.spearmen.running.general
+      contents:
+        value: aic_run_if_not_defined
+        choices:
+        - name: aic_ignore_run
+          text: '{{spearmen_running_ai_aic_ignore_run}}'
+        - name: aic_ignore_walk
+          text: '{{spearmen_running_ai_aic_ignore_walk}}'
+        - name: aic_run_if_not_defined
+          text: '{{spearmen_running_ai_aic_run_if_not_defined}}'
+        - name: aic_walk_if_not_defined
+          text: '{{spearmen_running_ai_aic_walk_if_not_defined}}'

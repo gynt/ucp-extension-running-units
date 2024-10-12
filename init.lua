@@ -1,4 +1,7 @@
 local macemen = require("units.macemen")
+local slingers = require("units.slingers")
+local slaves = require("units.slaves")
+local spearmen = require("units.spearmen")
 
 return {
 
@@ -7,10 +10,21 @@ return {
             macemen(config)
         end
 
-        if config.spearman and config.spearmen.running == true then
+        if config.slingers.running.general == true then
+            slingers(config)
+        end
+
+        if config.slaves.running.general == true then
+            slaves(config)
+        end
+
+        if config.spearmen.running.general == true then
             spearmen(config)
         end
     end,
-    disable = function(self) end,
+
+    disable = function(self)
+
+    end,
 
 }
