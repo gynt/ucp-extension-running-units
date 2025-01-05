@@ -1,0 +1,11 @@
+config-sparse:
+  modules:
+    ucp2-legacy:
+      config:
+        u_spearmen_run:
+          enabled:
+            contents:
+              required-value: false
+  plugins: {}
+meta:
+  version: 1.0.0
