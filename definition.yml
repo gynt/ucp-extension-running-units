@@ -1,4 +1,5 @@
 name: running-units
+type: module
 display-name: Running Units
 version: 1.0.2
 author: gynt
@@ -6,3 +7,5 @@ dependencies:
   frontend: ">=1.0.5"
   framework: ">=3.0.4"
   aicloader: ">=1.1.0"
+meta:
+  version: 1.0.0
