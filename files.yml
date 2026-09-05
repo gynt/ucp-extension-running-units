@@ -1,0 +1,11 @@
+meta:
+  version: 1.0.0
+files:
+- src: LICENSE
+- src: README.md
+- src: definition.yml
+- src: config.yml
+- src: init.lua
+- src: units
+- src: locale
+- src: options.yml

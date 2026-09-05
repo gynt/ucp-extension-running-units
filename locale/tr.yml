@@ -1,0 +1,14 @@
+balance_changes: Balance Changes
+title: Koşan Birimler
+general_descr: Karma gruplarda hangi birliklerin koşacağını seçin. Seçim insan oyuncular
+  için geçerlidir; izin verirseniz yapay zekâ kişilikleri bunu değiştirebilir.
+ai_rules: Yapay zekâ davranışı
+macemen_running_general: Gürzlü askerlerin koşmasını etkinleştir
+slingers_running_general: Sapancıların koşmasını etkinleştir
+slaves_running_general: Kölelerin koşmasını etkinleştir
+spearmen_running_general: Mızrakçıların koşmasını etkinleştir
+aic_ignore_run: Koş; yapay zekâ kişiliklerini yok say
+aic_ignore_walk: Oyun davranışı; yapay zekâ kişiliklerini yok say
+aic_run_if_not_defined: Varsayılan olarak koş; yapay zekâ kişiliklerine izin ver
+aic_walk_if_not_defined: Varsayılan oyun davranışı; yapay zekâ kişiliklerine izin
+  ver
