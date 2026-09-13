@@ -1,0 +1,13 @@
+balance_changes: Balance Changes
+title: Futó egységek
+general_descr: Válaszd ki, mely egységek fussanak vegyes csoportokban. A választás
+  az emberi játékosokra is érvényes; az MI-személyiségek felülírhatják, ha ezt engedélyezed.
+ai_rules: MI-viselkedés
+macemen_running_general: Buzogányosok futásának engedélyezése
+slingers_running_general: Parittyások futásának engedélyezése
+slaves_running_general: Rabszolgák futásának engedélyezése
+spearmen_running_general: Lándzsások futásának engedélyezése
+aic_ignore_run: Futás; MI-személyiségek figyelmen kívül hagyása
+aic_ignore_walk: Eredeti viselkedés; MI-személyiségek figyelmen kívül hagyása
+aic_run_if_not_defined: Alapból futás; MI-személyiségek engedélyezése
+aic_walk_if_not_defined: Alapból eredeti viselkedés; MI-személyiségek engedélyezése

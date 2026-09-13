@@ -1,0 +1,14 @@
+balance_changes: Balance Changes
+title: Unidades que corren
+general_descr: Elige qué tropas corren en grupos mixtos. La elección se aplica a los
+  jugadores humanos; las personalidades de la IA pueden cambiarla si lo permites.
+ai_rules: Comportamiento de la IA
+macemen_running_general: Permitir que corran los maceros
+slingers_running_general: Permitir que corran los honderos
+slaves_running_general: Permitir que corran los esclavos
+spearmen_running_general: Permitir que corran los lanceros
+aic_ignore_run: Correr; ignorar las personalidades de la IA
+aic_ignore_walk: Comportamiento del juego; ignorar las personalidades de la IA
+aic_run_if_not_defined: Correr por defecto; permitir personalidades de la IA
+aic_walk_if_not_defined: Comportamiento del juego por defecto; permitir personalidades
+  de la IA

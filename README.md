@@ -19,6 +19,14 @@ The same applies to slaves, spearmen, and slingers. Their AIC fields are `Runnin
 
 Note that for spearmen, there is a conflicting option in the UCP2-Legacy plugin which sets spearmen to running as well. Make sure that is off.
 
+## Customizations menu
+
+Version 1.0.3 requires GUI 1.0.16. Open **General → Balance Changes → Running
+Units**. The section starts collapsed. Each troop uses the same sword switch as
+UCP2-Legacy; its AI choices collapse with it. The menu supports all nine GUI
+languages. Runtime code, configuration keys, defaults and the existing required-off
+rule for UCP2-Legacy running spearmen are unchanged.
+
 ## Support
 All support is welcome!
 

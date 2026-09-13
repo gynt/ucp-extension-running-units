@@ -1,0 +1,14 @@
+balance_changes: Balance Changes
+title: Laufende Einheiten
+general_descr: Bestimme, welche Truppen in gemischten Gruppen rennen. Die Auswahl
+  gilt für menschliche Spieler; KI-Persönlichkeiten dürfen sie bei entsprechender
+  Auswahl überschreiben.
+ai_rules: KI-Verhalten
+macemen_running_general: Rennende Streitkolbenkämpfer aktivieren
+slingers_running_general: Rennende Schleuderer aktivieren
+slaves_running_general: Rennende Sklaven aktivieren
+spearmen_running_general: Rennende Speerkämpfer aktivieren
+aic_ignore_run: Rennen; KI-Persönlichkeiten ignorieren
+aic_ignore_walk: Spielverhalten; KI-Persönlichkeiten ignorieren
+aic_run_if_not_defined: Standardmäßig rennen; KI-Persönlichkeiten zulassen
+aic_walk_if_not_defined: Standardmäßig Spielverhalten; KI-Persönlichkeiten zulassen
