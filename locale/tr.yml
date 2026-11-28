@@ -1,14 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: Denge değişiklikleri
 title: Koşan Birimler
-general_descr: Karma gruplarda hangi birliklerin koşacağını seçin. Seçim insan oyuncular
-  için geçerlidir; izin verirseniz yapay zekâ kişilikleri bunu değiştirebilir.
-ai_rules: Yapay zekâ davranışı
-macemen_running_general: Gürzlü askerlerin koşmasını etkinleştir
-slingers_running_general: Sapancıların koşmasını etkinleştir
-slaves_running_general: Kölelerin koşmasını etkinleştir
-spearmen_running_general: Mızrakçıların koşmasını etkinleştir
-aic_ignore_run: Koş; yapay zekâ kişiliklerini yok say
-aic_ignore_walk: Oyun davranışı; yapay zekâ kişiliklerini yok say
-aic_run_if_not_defined: Varsayılan olarak koş; yapay zekâ kişiliklerine izin ver
-aic_walk_if_not_defined: Varsayılan oyun davranışı; yapay zekâ kişiliklerine izin
-  ver
+general_descr: Hangi birimlerin koşabileceğini seçin, ardından her yapay zekâ birlik türü için koşma kuralını belirleyin.
+ai_rules: Yapay zekâ birlikleri için koşma
+macemen_running_general: Gürzcüler koşabilir
+slingers_running_general: Sapancılar koşabilir
+slaves_running_general: Köleler koşabilir
+spearmen_running_general: Mızrakçılar koşabilir
+aic_ignore_run: Her zaman koş
+aic_ignore_walk: Her zaman oyun davranışını kullan
+aic_run_if_not_defined: Varsayılan olarak koş (yapay zekâ geçersiz kılabilir)
+aic_walk_if_not_defined: Varsayılan olarak oyun davranışı (yapay zekâ geçersiz kılabilir)
+tags.behavior: Davranış
+tags.ai: Yapay zekâ
+cat_units_armour: Birlik hareketi ve zırh

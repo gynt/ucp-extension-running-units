@@ -1,12 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: 平衡调整
 title: 奔跑单位
-general_descr: 选择哪些兵种在混合编队中奔跑。此选择适用于人类玩家；若允许，AI 个性设置可覆盖此选择。
-ai_rules: AI 行为
-macemen_running_general: 启用链锤兵奔跑
-slingers_running_general: 启用投石兵奔跑
-slaves_running_general: 启用奴隶奔跑
-spearmen_running_general: 启用长矛兵奔跑
-aic_ignore_run: 奔跑；忽略 AI 个性设置
-aic_ignore_walk: 游戏原有行为；忽略 AI 个性设置
-aic_run_if_not_defined: 默认奔跑；允许 AI 个性设置覆盖
-aic_walk_if_not_defined: 默认使用游戏原有行为；允许 AI 个性设置覆盖
+general_descr: 选择哪些单位可以奔跑，再为每种 AI 兵种设置奔跑规则。
+ai_rules: AI 部队的奔跑规则
+macemen_running_general: 链锤兵可以奔跑
+slingers_running_general: 投石兵可以奔跑
+slaves_running_general: 奴隶可以奔跑
+spearmen_running_general: 长矛兵可以奔跑
+aic_ignore_run: 始终奔跑
+aic_ignore_walk: 始终使用游戏原版行为
+aic_run_if_not_defined: 默认奔跑（允许 AI 覆盖）
+aic_walk_if_not_defined: 默认使用游戏行为（允许 AI 覆盖）
+tags.behavior: 行为
+tags.ai: 人工智能
+cat_units_armour: 部队移动与护甲

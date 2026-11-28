@@ -1,60 +1,45 @@
-local function isLegacyOptionSet()
-    local status, ret = pcall(function()
-        return core.AOBScan("74 13 C7 86 ? ? ? ?  81 00 00 00 66 89 86 ? ? ? ? EB 0D 89 86 ? ? ? ? 66 89 BE")
-    end)
-
-    if status ~= true then
-        return true
-    end
-    return false
-end
-
--- 17 bytes for storing which aic wants running spearmen, 0 is the human
--- for others, this is the logic: array[aiType] == 1 means run
--- array[aiType] == 2 means walk
--- array[aiType] == 0 means vanilla (aka don't set)
-local aicRunningSpearmen = core.allocate(17 * 1, true) -- 17 bytes
+local settings = require("units.settings")
 
 local SPEARMEN_AIC_KEY = "RunningUnits_Spearmen"
-local SPEARMEN_AIC_VALUES = {
-    [0] = "vanilla",
-    [1] = "run",
-    [2] = "walk",
-}
-local spearmenMode = core.allocate(1, true)
+
+-- The detour replays the first comparison for the game's own decision.
+-- The run and walk branches at +60 and +79 both set the movement state and destination field.
+local DECISION = "66 39 BE ? ? ? ? 74 21 89 86 ? ? ? ? 66 83 BE ? ? ? ? 46 7E 3C 66 C7 86 ? ? ? ? FF FF "
+    .. "89 BE ? ? ? ? EB 32 66 39 BE ? ? ? ? 75 1C 66 39 BE ? ? ? ? 74 13 C7 86 ? ? ? ? 81 00 00 00 "
+    .. "66 89 86 ? ? ? ? EB 0D 89 86 ? ? ? ? 66 89 BE ? ? ? ?"
+
+local PLAYER_ID = "0F ? ? ? ? ? ? 8B EF 69 ED F4 39 00 00 BA 01 00 00 00 01 ? ? ? ? ? 01 ? ? ? ? ? 51 B9 ? ? ? ? 66 ? ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ?"
 
 return function(config)
-    if isLegacyOptionSet() then
-        error(
-            "Running-Units detected the ucp2-legacy spearmen running feature is enabled and the spearmen running feature from Running-Units is enabled. Choose one.")
+    local defaultAction, allowAIC = settings.rule("spearmen", config.spearmen.running.ai, 0)
+
+    local ok, beforeCmpLocation = pcall(core.AOBScan, DECISION)
+    if not ok then
+        log(ERROR, "Running spearmen is off: run decision not found.")
+        return
     end
+    if core.readInteger(beforeCmpLocation + 3) ~= core.readInteger(beforeCmpLocation + 18) then
+        log(ERROR, "Running spearmen is off: run decision compares different unit fields.")
+        return
+    end
+    if core.readInteger(beforeCmpLocation + 62) ~= core.readInteger(beforeCmpLocation + 81)
+        or core.readInteger(beforeCmpLocation + 73) ~= core.readInteger(beforeCmpLocation + 88) then
+        log(ERROR, "Running spearmen is off: run and walk branches write different unit fields.")
+        return
+    end
+    local playerIDOk, playerID = pcall(core.AOBScan, PLAYER_ID)
+    if not playerIDOk then
+        log(ERROR, "Running spearmen is off: unit player field not found.")
+        return
+    end
+    local ptrCurrentAIArray, reason = settings.currentAI()
+    if ptrCurrentAIArray == nil then
+        log(ERROR, "Running spearmen is off: current AI array " .. reason .. ".")
+        return
+    end
+    local ptrUnitsArray_PlayerID = core.readInteger(playerID + 3)
 
     log(VERBOSE, "enable spearmen running")
-    -- Register in the aicloader that we provide an extra value
-    modules.aicloader:setAdditionalAICValue(
-        SPEARMEN_AIC_KEY,
-        -- set
-        function(aiType, aicValue)
-            if type(aicValue) ~= "number" then
-                log(WARNING,
-                    string.format("Cannot set AIC '%s', invalid value: %s", SPEARMEN_AIC_KEY, tostring(aicValue)))
-            else
-                if config.spearmen.running.ai ~= "aic_ignore_run" and config.spearmen.running.ai ~= "aic_ignore_walk" then
-                    log(VERBOSE,
-                        string.format("Setting %s for ai #%s to value '%s'", SPEARMEN_AIC_KEY, aiType,
-                            tostring(SPEARMEN_AIC_VALUES[aicValue])))
-                    core.writeByte(aicRunningSpearmen + aiType, aicValue)
-                else
-                    log(WARNING,
-                        string.format("Did not set AIC '%s', aic value is ignored", SPEARMEN_AIC_KEY))
-                end
-            end
-        end,
-        -- reset
-        function(aiType)
-            core.writeByte(aicRunningSpearmen + aiType, 0)
-        end
-    )
 
     -- Location for the detour
     -- ESI contains units offset for current unit ID
@@ -63,52 +48,14 @@ return function(config)
     -- ECX should be restored
     -- EAX should be restored
     -- EDI should be restored
-    -- 0x0055e044
-    local beforeCmpLocation = core.AOBScan("66 ? ? ? ? ? ? 74 21 89 ? ? ? ? ? 66 ? ? ? ? ? ? ? 7E 3C")
     local detourSize = 7
-    local setRunning = beforeCmpLocation + 60 -- 0x0055e080
+    local setRunning = beforeCmpLocation + 60
 
-    if config.spearmen.running.ai == "aic_ignore_run" then
-        -- Set to always run without caring about AIC
-        core.writeBytes(aicRunningSpearmen, {
-            1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1,
-            1, 1,
-        })
-    elseif config.spearmen.running.ai == "aic_ignore_walk" then
-        -- Do nothing?, this is the vanilla situation
-        core.writeBytes(aicRunningSpearmen, {
-            2, 2, 2, 2, 2,
-            2, 2, 2, 2, 2,
-            2, 2, 2, 2, 2,
-            2, 2,
-        })
-    elseif config.spearmen.running.ai == "aic_run_if_not_defined" then
-        -- If AIC didn't define, assume run
-        core.writeBytes(aicRunningSpearmen, {
-            1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1,
-            1, 1,
-        })
-    elseif config.spearmen.running.ai == "aic_walk_if_not_defined" then
-        -- If AIC didn't define, assume walk
-        core.writeBytes(aicRunningSpearmen, {
-            2, 2, 2, 2, 2,
-            2, 2, 2, 2, 2,
-            2, 2, 2, 2, 2,
-            2, 2,
-        })
-    else
-        error(string.format("Invalid option: %s", config.spearmen.running.ai))
-    end
+    local setWalking = beforeCmpLocation + 79
 
-    local _, ptrUnitsArray_PlayerID = utils.AOBExtract(
-        "0F ? ? I(? ? ? ?) 8B EF 69 ED F4 39 00 00 BA 01 00 00 00 01 ? ? ? ? ? 01 ? ? ? ? ? 51 B9 ? ? ? ? 66 ? ? ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ?"
-    )
-    local _, ptrCurrentAIArray = utils.AOBExtract(
-        "8D ? ? I(? ? ? ?) 6A 04 51 B9 ? ? ? ? E8 ? ? ? ? 8B ? ? ? ? ? 6A 00 6A 00")
+    -- One byte per AI type, including index 0 for the human player.
+    local aicRunningSpearmen = settings.allocate(defaultAction)
+
     local asm = [[
 		push ECX
 		push EAX
@@ -129,10 +76,8 @@ return function(config)
 		; get configured action for aiType
 		xor ECX, ECX
 		mov CL, BYTE [EAX*1 + aicRunningSpearmen]
-		cmp ECX, 0
-		je original
 		cmp ECX, 2
-		je original
+		je walking
 		cmp ECX, 1
 		jne original
 
@@ -142,7 +87,13 @@ return function(config)
 		pop EAX
 		pop ECX
 		; jumps away; original code isn't run
-		jmp setRunning
+		jmp near setRunning
+
+	  walking:
+		pop EDI
+		pop EAX
+		pop ECX
+		jmp near setWalking
 
 	  original:
     pop EDI
@@ -157,7 +108,11 @@ return function(config)
             ptrCurrentAIArray = ptrCurrentAIArray,
             aicRunningSpearmen = aicRunningSpearmen,
             setRunning = setRunning,
+            setWalking = setWalking,
             ptrUnitsArray_PlayerID = ptrUnitsArray_PlayerID,
         }),
     }, nil, 'after')
+
+    -- Register in the aicloader that we provide an extra value, once the detour is in place
+    settings.register(SPEARMEN_AIC_KEY, aicRunningSpearmen, allowAIC, defaultAction)
 end

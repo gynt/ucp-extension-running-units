@@ -1,14 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: تغییرات توازن
 title: واحدهای دونده
-general_descr: انتخاب کنید کدام نیروها در گروه‌های ترکیبی بدوند. این انتخاب برای بازیکنان
-  انسانی اعمال می‌شود؛ در صورت اجازه، تنظیمات شخصیت هوش مصنوعی می‌تواند آن را تغییر
-  دهد.
-ai_rules: رفتار هوش مصنوعی
-macemen_running_general: فعال کردن دویدن گرزداران
-slingers_running_general: فعال کردن دویدن فلاخن‌اندازان
-slaves_running_general: فعال کردن دویدن بردگان
-spearmen_running_general: فعال کردن دویدن نیزه‌داران
-aic_ignore_run: دویدن؛ نادیده گرفتن شخصیت هوش مصنوعی
-aic_ignore_walk: رفتار اصلی بازی؛ نادیده گرفتن شخصیت هوش مصنوعی
-aic_run_if_not_defined: دویدن به‌طور پیش‌فرض؛ اجازه به شخصیت هوش مصنوعی
-aic_walk_if_not_defined: رفتار اصلی بازی به‌طور پیش‌فرض؛ اجازه به شخصیت هوش مصنوعی
+general_descr: انتخاب کنید کدام واحدها بتوانند بدوند، سپس قاعدهٔ دویدن را برای هر نوع نیروی هوش مصنوعی تعیین کنید.
+ai_rules: دویدن نیروهای هوش مصنوعی
+macemen_running_general: گرزداران می‌توانند بدوند
+slingers_running_general: فلاخن‌اندازان می‌توانند بدوند
+slaves_running_general: بردگان می‌توانند بدوند
+spearmen_running_general: نیزه‌داران می‌توانند بدوند
+aic_ignore_run: همیشه بدوند
+aic_ignore_walk: همیشه رفتار اصلی بازی
+aic_run_if_not_defined: دویدن به پیش‌فرض (با امکان بازنویسی هوش مصنوعی)
+aic_walk_if_not_defined: رفتار پیش‌فرض بازی (قابل تغییر برای هر هوش مصنوعی)
+tags.behavior: رفتار
+tags.ai: هوش مصنوعی
+cat_units_armour: حرکت و زره نیروها

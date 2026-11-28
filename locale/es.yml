@@ -1,14 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: Cambios de equilibrio
 title: Unidades que corren
-general_descr: Elige qué tropas corren en grupos mixtos. La elección se aplica a los
-  jugadores humanos; las personalidades de la IA pueden cambiarla si lo permites.
-ai_rules: Comportamiento de la IA
-macemen_running_general: Permitir que corran los maceros
-slingers_running_general: Permitir que corran los honderos
-slaves_running_general: Permitir que corran los esclavos
-spearmen_running_general: Permitir que corran los lanceros
-aic_ignore_run: Correr; ignorar las personalidades de la IA
-aic_ignore_walk: Comportamiento del juego; ignorar las personalidades de la IA
-aic_run_if_not_defined: Correr por defecto; permitir personalidades de la IA
-aic_walk_if_not_defined: Comportamiento del juego por defecto; permitir personalidades
-  de la IA
+general_descr: Elige qué unidades pueden correr y define la regla de carrera para cada tipo de unidad de la IA.
+ai_rules: Carrera para tropas de la IA
+macemen_running_general: Los maceros pueden correr
+slingers_running_general: Los honderos pueden correr
+slaves_running_general: Los esclavos pueden correr
+spearmen_running_general: Los lanceros pueden correr
+aic_ignore_run: Correr siempre
+aic_ignore_walk: Usar siempre el comportamiento del juego
+aic_run_if_not_defined: Correr por defecto (permitir sobrescritura de la IA)
+aic_walk_if_not_defined: Comportamiento del juego por defecto (permitir sobrescritura de la IA)
+tags.behavior: Comportamiento
+tags.ai: IA
+cat_units_armour: Movimiento y armadura de unidades

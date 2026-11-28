@@ -1,15 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: Modifications de l'équilibrage
 title: Unités au pas de course
-general_descr: Choisissez les troupes qui courent dans les groupes mixtes. Le choix
-  vaut pour les joueurs humains ; les personnalités IA peuvent le remplacer si vous
-  les y autorisez.
-ai_rules: Comportement IA
-macemen_running_general: Activer la course des massiers
-slingers_running_general: Activer la course des frondeurs
-slaves_running_general: Activer la course des esclaves
-spearmen_running_general: Activer la course des lanciers
-aic_ignore_run: Courir ; ignorer les personnalités IA
-aic_ignore_walk: Comportement du jeu ; ignorer les personnalités IA
-aic_run_if_not_defined: Courir par défaut ; autoriser les personnalités IA
-aic_walk_if_not_defined: Comportement du jeu par défaut ; autoriser les personnalités
-  IA
+general_descr: Choisissez quelles unités peuvent courir, puis réglez la course pour chaque type de troupe IA.
+ai_rules: Course des troupes IA
+macemen_running_general: Les massiers peuvent courir
+slingers_running_general: Les frondeurs peuvent courir
+slaves_running_general: Les esclaves peuvent courir
+spearmen_running_general: Les lanciers peuvent courir
+aic_ignore_run: Toujours courir
+aic_ignore_walk: Toujours utiliser le comportement du jeu
+aic_run_if_not_defined: Courir par défaut (remplacement IA autorisé)
+aic_walk_if_not_defined: Comportement du jeu par défaut (remplacement IA autorisé)
+tags.behavior: Comportement
+tags.ai: IA
+cat_units_armour: Déplacement et armure des unités

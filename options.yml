@@ -5,6 +5,7 @@ options:
   text: '{{general_descr}}'
   category:
   - '{{balance_changes}}'
+  - '{{cat_units_armour}}'
   children:
   - display: UCP2Switch
     header: '{{macemen_running_general}}'

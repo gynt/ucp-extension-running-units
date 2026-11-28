@@ -1,14 +1,15 @@
-balance_changes: Balance Changes
+balance_changes: Изменения баланса
 title: Бегущие воины
-general_descr: Выберите, какие воины бегают в смешанных группах. Выбор действует для
-  игроков-людей; при разрешении настройки личности ИИ могут его переопределить.
-ai_rules: Поведение ИИ
-macemen_running_general: Включить бег палиценосцев
-slingers_running_general: Включить бег пращников
-slaves_running_general: Включить бег рабов
-spearmen_running_general: Включить бег копейщиков
-aic_ignore_run: Бегать; игнорировать настройки личности ИИ
-aic_ignore_walk: Поведение игры; игнорировать настройки личности ИИ
-aic_run_if_not_defined: По умолчанию бегать; разрешить настройки личности ИИ
-aic_walk_if_not_defined: По умолчанию поведение игры; разрешить настройки личности
-  ИИ
+general_descr: Выберите, какие отряды могут бегать, затем задайте правило бега для каждого вида войск ИИ.
+ai_rules: Бег для войск ИИ
+macemen_running_general: Пехотинцы с булавами могут бегать
+slingers_running_general: Пращники могут бегать
+slaves_running_general: Рабы могут бегать
+spearmen_running_general: Копейщики могут бегать
+aic_ignore_run: Всегда бегать
+aic_ignore_walk: Всегда использовать поведение игры
+aic_run_if_not_defined: Бегать по умолчанию (ИИ может переопределить)
+aic_walk_if_not_defined: Поведение игры по умолчанию (ИИ может переопределить)
+tags.behavior: Поведение
+tags.ai: ИИ
+cat_units_armour: Передвижение и броня войск

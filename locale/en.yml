@@ -1,13 +1,15 @@
 balance_changes: Balance Changes
 title: Running Units
-general_descr: Choose which troops run in mixed groups. Each choice sets the behaviour
-  for human players; AI personalities can override it when allowed.
-ai_rules: AI behaviour
-macemen_running_general: Enable running macemen
-slingers_running_general: Enable running slingers
-slaves_running_general: Enable running slaves
-spearmen_running_general: Enable running spearmen
-aic_ignore_run: Run; ignore AI personalities
-aic_ignore_walk: Game behaviour; ignore AI personalities
-aic_run_if_not_defined: Run by default; allow AI personalities
-aic_walk_if_not_defined: Game behaviour by default; allow AI personalities
+general_descr: "Choose which units can run, then set the running rule for each AI unit type."
+ai_rules: "Running for AI troops"
+macemen_running_general: "Macemen can run"
+slingers_running_general: "Slingers can run"
+slaves_running_general: "Slaves can run"
+spearmen_running_general: "Spearmen can run"
+aic_ignore_run: "Always run"
+aic_ignore_walk: "Always use game behaviour"
+aic_run_if_not_defined: "Run by default (allow AI overrides)"
+aic_walk_if_not_defined: "Use game behaviour by default (allow AI overrides)"
+tags.behavior: Behavior
+tags.ai: AI
+cat_units_armour: Unit movement and armour
